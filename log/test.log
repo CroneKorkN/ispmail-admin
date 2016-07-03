@@ -1,0 +1,22 @@
+  [1m[36m (187.6ms)[0m  [1mCREATE TABLE "aliases" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "source" varchar(255), "destination" varchar(255), "domain_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (134.5ms)[0m  [1mCREATE  INDEX "index_aliases_on_domain_id" ON "aliases" ("domain_id")[0m
+  [1m[35m (133.1ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "source" varchar(255), "destination" text, "domain_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (156.6ms)[0m  [1mCREATE  INDEX "index_comments_on_domain_id" ON "comments" ("domain_id")[0m
+  [1m[35m (159.6ms)[0m  CREATE TABLE "domains" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (158.0ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user" varchar(255), "password" varchar(255), "domain_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (165.1ms)[0m  CREATE  INDEX "index_users_on_domain_id" ON "users" ("domain_id")
+  [1m[36m (176.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (165.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (193.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140525125821')
+  [1m[36m (158.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140523184740')[0m
+  [1m[35m (141.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140523171525')
+  [1m[36m (148.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140525124645')[0m
+  [1m[35m (143.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140525120040')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("email", "password", "domain_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', NULL, '2014-05-25 13:06:24', '2014-05-25 13:06:24', 980190962)
+SQLite3::SQLException: table users has no column named email: INSERT INTO "users" ("email", "password", "domain_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', NULL, '2014-05-25 13:06:24', '2014-05-25 13:06:24', 980190962)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m

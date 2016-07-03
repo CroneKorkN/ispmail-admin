@@ -1,0 +1,6 @@
+<p>
+  <%= @user.user %>@<%= @user.domain.name %>
+
+</p>
+
+<%= link_to 'users', users_path %>

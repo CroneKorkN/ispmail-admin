@@ -1,0 +1,16 @@
+<table class=list>
+  <% @users.each do |user| %>
+    <tr>
+      <td class=right><img src="/icons/user.png"/><%= user.user %></td>
+      <td>@<%= user.domain.name %></td>
+      <td>
+        <%= link_to '<img src=/icons/edit.png />'.html_safe,
+          edit_user_path(user) %>
+        <%= link_to '<img src=/icons/delete.png />'.html_safe,
+          user_path(user),
+          method: :delete,
+          data: { confirm: 'sure delete?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>

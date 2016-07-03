@@ -1,0 +1,18 @@
+<table class=list>
+  <% @redirections.each do |redirection| %>
+    <tr>
+      <td><img src="/icons/redirection.png"/></td>
+      <td class=right><%= redirection.source %></td>
+      <td>@<%= redirection.domain.name %></td>
+      <td><img src="/icons/redirection_dest.png"/><%= redirection.destination %></td>
+      <td>
+        <%= link_to '<img src=icons/edit.png />'.html_safe,
+          edit_redirection_path(redirection) %>
+      	<%= link_to '<img src=icons/delete.png />'.html_safe,
+      	  redirection_path(redirection),
+          method: :delete,
+          data: { confirm: 'sure delete?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>

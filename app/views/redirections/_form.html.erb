@@ -1,0 +1,22 @@
+<%= form_for @redirection do |f| %>
+  <% if @redirection.errors.any? %>
+    <div id="error">
+      <%= pluralize(@redirection.errors.count, "error") %>:
+      <% @redirection.errors.full_messages.join("; ") %>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :source %><br>
+    <%= f.text_field :source %>@
+    <%= f.collection_select :domain_id, @domains, :id, :name %>
+  </p>
+  <p>
+    <%= f.label :destination %><br>
+    <%= f.text_field :destination %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

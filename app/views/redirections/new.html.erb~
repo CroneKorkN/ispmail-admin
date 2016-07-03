@@ -1,0 +1,5 @@
+<h2>new redirection</h2>
+
+<%= render 'form' %>
+
+<%= link_to 'back', redirections_path %>

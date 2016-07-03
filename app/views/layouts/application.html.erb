@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mailadmin2</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag "filename" %>
+</head>
+<body>
+
+<h1><%= link_to "rubyMailAdmin", :root %></h1>
+
+<table id=nav>
+  <tr>
+    <td><img src="/icons/domain.png"/><%= link_to "domains", domains_path %></td>
+    <td><%= link_to "<img src=/icons/add.png />".html_safe, :new_domain %></td>
+  </tr>
+  <tr>
+    <td><img src="/icons/user.png"/><%= link_to "users", users_path %></td>
+    <td><%= link_to "<img src=/icons/add.png />".html_safe, :new_user %></td>
+  </tr>
+  <tr>
+    <td><img src="/icons/redirection.png"/><%= link_to "redirection", redirections_path %></td>
+    <td><%= link_to "<img src=/icons/add.png />".html_safe, :new_redirection %></td>
+  </tr>
+</table>
+
+<div id=body>
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+  <%= yield %>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+class AliasesController < ApplicationController
+  def new
+    if Domain.all.empty?
+flash[:notice] = "Thanks for your comment!"
+      redirect_to new_domain_path, notice: "create a domain first!"
+    end
+
+    @alias = Alias.new
+    @domains = Domain.all
+  end
+  
+  def create
+    @alias = Alias.new(alias_params)
+
+    if @alias.save
+      redirect_to @alias
+    else
+      render 'new'
+    end
+  end
+  
+  def edit
+    @alias = Alias.find(params[:id])
+    @domains = Domain.all
+  end
+  
+  def update
+    @alias = Alias.find(params[:id])
+   
+    if @alias.update(alias_params)
+      redirect_to @alias
+    else
+      render 'edit'
+    end
+  end
+  
+  def show
+    @alias = Alias.find(params[:id])
+  end
+  
+  def index
+    @aliases = Alias.all
+  end
+  
+  def destroy
+    @alias = Alias.find(params[:id])
+    @alias.destroy
+   
+    redirect_to aliases_path
+  end
+  
+  private
+    def alias_params
+      params.require(:alias).permit(:alias,:password,:domain_id)
+    end
+end

@@ -1,0 +1,26 @@
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error">
+      <%= pluralize(@redirection.errors.count, "error") %>:
+      <% @user.errors.full_messages.join("; ") %>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :user %><br>
+    <%= f.text_field :user %>@
+    <%= f.collection_select :domain_id, @domains, :id, :name %>
+  </p>
+
+  <p>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+    <% if @user.user %>
+      <%= f.check_box :change_pw %> change password?
+    <% end %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

@@ -1,0 +1,16 @@
+<%= form_for @domain do |f| %>
+  <% if @domain.errors.any? %>
+    <div id="error">
+      <%= pluralize(@domain.errors.count, "error") %>:
+      <% @domain.errors.full_messages.join("; ") %>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

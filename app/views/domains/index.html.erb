@@ -1,0 +1,15 @@
+<table class=list>
+  <% @domains.each do |domain| %>
+    <tr>
+      <td><img src="/icons/domain.png"/><%= domain.name %></td>
+      <td>
+        <%= link_to '<img src=icons/edit.png />'.html_safe,
+          edit_domain_path(domain) %>
+        <%= link_to '<img src=icons/delete.png />'.html_safe,
+          domain_path(domain),
+          method: :delete,
+          data: { confirm: 'sure delete?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,8 @@
+<p>
+  <%= @redirection.source %>@<%= @redirection.domain.name %> =>
+  <%= @redirection.destination %>
+</p>
+
+<br/><%= link_to 'redirections', redirections_path %>
+<br/><%= link_to 'home', root_path %>
+
